@@ -37,15 +37,19 @@ class Ball(Sprite):
 if __name__ == "__main__":
     from pygame import init
     from Window import Window
+    from Paddle import Paddle
 
     init()
     window = Window()
     ball = Ball(window)
+    paddle = Paddle(window)
 
     while True:
         window.getEvents()
         ball.bounce()
+        paddle.move(window.getKeyPressed())
         window.clearScreen()
         window.blitSprite(ball)
+        window.blitSprite(paddle)
         window.updateScreen()
 
