@@ -28,18 +28,18 @@ class Window:
     def clearScreen(self):
         self.screen.fill(self.background)
 
-    #def blitSprite(self, sprite):
+    def blitSprite(self, sprite):
+        self.screen.blit(sprite.getSprite(), sprite.getPOS())
 
-    def run(self):
+    def run(self, sprite):
         while True:
             ## --- INPUTS
             self.getEvents()
-            ## --- PROCESSING
-
-            # add sprite functions here
 
             ## --- OUTPUTS
             self.clearScreen()
+            self.blitSprite(sprite)
+
             self.updateScreen()
 
     # --- Accessor Methods --- #
