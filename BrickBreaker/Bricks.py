@@ -4,6 +4,7 @@ Title: Bricks class
 
 from Sprites import Sprite
 
+
 class Box(Sprite):
 
     def __init__(self, window):
@@ -12,11 +13,12 @@ class Box(Sprite):
         self.setPOS(0, 0)
 
 
-class Bricks:
+class Bricks(Sprite):
 
     def __init__(self, window):
-        self.window = window
+        Sprite.__init__(self, window)
         self.bricks = []
+
 
         for i in range(7):
             self.bricks.append(Box(self.window))
@@ -27,6 +29,12 @@ class Bricks:
     def blitBricks(self):
         for brick in self.bricks:
             self.window.blitSprite(brick)
+
+    def getBricks(self):
+        return self.bricks
+
+
+
 
 '''
 if __name__ == "__main__":
