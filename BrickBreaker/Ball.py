@@ -9,7 +9,7 @@ class Ball(Sprite):
     def __init__(self, window):
         Sprite.__init__(self, window)
         self.setDimensions(10, 10)
-        self.setPOS(self.window.getWidth() / 2 - self.width / 2, self.window.getHeight() - (self.height + 10))
+        self.setPOS(self.window.getWidth() / 2 - self.width / 2, self.window.getHeight()/2 - self.height/2)
         self.spd = 10
 
     def bounce(self):
@@ -34,6 +34,11 @@ class Ball(Sprite):
 
     def getBallPaddleCollision(self, paddle):
         if paddle.getX() <= self.x +self.sprite.get_rect().width <= paddle.getX() + paddle.getWidth() + self.sprite.get_rect().width and paddle.getY()<= self.y + self.sprite.get_rect().height <=paddle.getY() + paddle.getHeight() + self.sprite.get_rect().height:
+            self.y += self.dirY * self.spd
+
+            self.y = paddle.getY() - self.getHeight()
+            self.dirY = -1
+
             return True
         else:
             return False
@@ -58,8 +63,8 @@ if __name__ == "__main__":
         paddle.move(window.getKeyPressed())
         window.clearScreen()
 
-        if ball.getBallPaddleCollision(paddle):
-            window.blitSprite(box)
+        ball.getBallPaddleCollision(paddle)
+
 
         window.blitSprite(ball)
         window.blitSprite(paddle)
