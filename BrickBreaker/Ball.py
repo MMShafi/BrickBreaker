@@ -32,24 +32,38 @@ class Ball(Sprite):
 
         self.pos = (self.x, self.y)
 
+    def getBallPaddleCollision(self, paddle):
+        if paddle.getX() <= self.x +self.sprite.get_rect().width <= paddle.getX() + paddle.getWidth() + self.sprite.get_rect().width and paddle.getY()<= self.y + self.sprite.get_rect().height <=paddle.getY() + paddle.getHeight() + self.sprite.get_rect().height:
+            return True
+        else:
+            return False
 
 
 if __name__ == "__main__":
     from pygame import init
     from Window import Window
     from Paddle import Paddle
+    from Bricks import *
 
     init()
     window = Window()
     ball = Ball(window)
     paddle = Paddle(window)
+    box = Box(window)
+    bricks = Bricks(window)
 
     while True:
         window.getEvents()
         ball.bounce()
         paddle.move(window.getKeyPressed())
         window.clearScreen()
+
+        if ball.getBallPaddleCollision(paddle):
+            window.blitSprite(box)
+
         window.blitSprite(ball)
         window.blitSprite(paddle)
+        bricks.blitBricks()
+
         window.updateScreen()
 

@@ -13,6 +13,8 @@ class Paddle(Sprite):
         self.setPOS(self.window.getWidth() / 2 - self.width / 2, self.window.getHeight() - (self.height +10))
         self.spd = 10
 
+    # --- Modifier Methods --- #
+
     def move(self, keys):
         if keys[K_d] == 1:
             self.x += self.spd
@@ -26,6 +28,8 @@ class Paddle(Sprite):
 
         self.pos =(self.x, self.y)
 
+
+'''
 if __name__ == "__main__":
     from pygame import init
     from Window import Window
@@ -40,3 +44,4 @@ if __name__ == "__main__":
         window.clearScreen()
         window.blitSprite(paddle)
         window.updateScreen()
+'''

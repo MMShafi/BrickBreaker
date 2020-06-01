@@ -3,20 +3,19 @@ Title: Bricks class
 """
 
 from Sprites import Sprite
-from Window import Window
 
 class Box(Sprite):
 
     def __init__(self, window):
         Sprite.__init__(self, window)
         self.setDimensions(100, 30)
-        self.setPOS(self.window.getWidth()/2 - self.width/2, self.window.getHeight()/2 - self.height)
+        self.setPOS(0, 0)
 
 
 class Bricks:
 
-    def __init__(self):
-        self.window = Window()
+    def __init__(self, window):
+        self.window = window
         self.bricks = []
 
         for i in range(7):
@@ -29,7 +28,7 @@ class Bricks:
         for brick in self.bricks:
             self.window.blitSprite(brick)
 
-
+'''
 if __name__ == "__main__":
     from pygame import init
     from Window import Window
@@ -40,7 +39,7 @@ if __name__ == "__main__":
     window = Window()
     ball = Ball(window)
     paddle = Paddle(window)
-    bricks = Bricks()
+    bricks = Bricks(window)
 
     while True:
         window.getEvents()
@@ -55,4 +54,4 @@ if __name__ == "__main__":
 
         window.updateScreen()
 
-
+'''

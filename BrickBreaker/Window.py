@@ -60,7 +60,9 @@ class Window:
     def getKeyPressed(self):
         return self.keysPressed
 
+'''
 if __name__ == "__main__":
     pygame.init()
     window = Window()
     window.run()
+'''

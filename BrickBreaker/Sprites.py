@@ -23,6 +23,7 @@ class Sprite:
         self.dirX = 1
         self.dirY = 1
 
+
     # --- Modifier Methods --- #
     # --- Dimensions
     def updateSprite(self):
@@ -77,7 +78,7 @@ class Sprite:
     def getPOS(self):
         return self.pos
 
-
+'''
 if __name__ == "__main__":
     from Window import Window
     from pygame import init
@@ -87,4 +88,4 @@ if __name__ == "__main__":
     sprite = Sprite(window)
     while True:
         window.run(sprite)
-
+'''
