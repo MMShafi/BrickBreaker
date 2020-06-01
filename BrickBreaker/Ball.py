@@ -36,6 +36,7 @@ class Ball(Sprite):
 
     def getBallPaddleCollision(self, paddle):
         if paddle.getX() <= self.x +self.sprite.get_rect().width <= paddle.getX() + paddle.getWidth() + self.sprite.get_rect().width and paddle.getY()<= self.y + self.sprite.get_rect().height <=paddle.getY() + paddle.getHeight() + self.sprite.get_rect().height:
+
             self.y += self.dirY * self.spd
             self.y = paddle.getY() - self.getHeight()
             self.dirY = -1
@@ -45,17 +46,14 @@ class Ball(Sprite):
 
     def getBallBrickCollision(self, bricks):
         if bricks.getX() <= self.x +self.sprite.get_rect().width <= bricks.getX() + paddle.getWidth() + self.sprite.get_rect().width and bricks.getY()<= self.y + self.sprite.get_rect().height <= bricks.getY() + paddle.getHeight() + self.sprite.get_rect().height:
+
+            self.y += self.dirY * self.spd
+            self.y = (bricks.getY() + bricks.getHeight()) + self.getHeight()
+            self.dirY = 1
             return True
         else:
             return False
-''' test
-    def getCollideBrickBall(self, ball):
-        for i in range(len(self.bricks)):
-            if ball.getX()<= self.x + self.getBricks()[i].getWidth() <= ball.getX() + ball.getWidth() + self.getBricks()[i].getWidth() and ball.getY()<= self.y + self.getBricks()[i].getHeight() <= ball.getY() + ball.getHeight() +self.getBricks()[i].getHeight() :
-                return True
-            else:
-                return False
-'''
+
 
 
 
