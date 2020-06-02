@@ -45,7 +45,7 @@ class Ball(Sprite):
             pass
 
     def getBallBrickCollision(self, bricks):
-        if bricks.getX() <= self.x +self.sprite.get_rect().width <= bricks.getX() + paddle.getWidth() + self.sprite.get_rect().width and bricks.getY()<= self.y + self.sprite.get_rect().height <= bricks.getY() + paddle.getHeight() + self.sprite.get_rect().height:
+        if bricks.getX() <= self.x +self.sprite.get_rect().width <= bricks.getX() + bricks.getWidth() + self.sprite.get_rect().width and bricks.getY()<= self.y + self.sprite.get_rect().height <= bricks.getY() + bricks.getHeight() + self.sprite.get_rect().height:
 
             self.y += self.dirY * self.spd
             self.y = (bricks.getY() + bricks.getHeight()) + self.getHeight()
@@ -55,7 +55,7 @@ class Ball(Sprite):
             return False
 
 
-
+'''
 
 if __name__ == "__main__":
     from pygame import init
@@ -73,14 +73,15 @@ if __name__ == "__main__":
 
     while True:
         window.getEvents()
+
         ball.bounce()
         paddle.move(window.getKeyPressed())
-        window.clearScreen()
 
         ball.getBallPaddleCollision(paddle)
         for brick in bricks.getBricks():
-            if ball.getBallBrickCollision(brick):
-                window.blitSprite(box)
+             ball.getBallBrickCollision(brick)
+
+        window.clearScreen()
 
         window.blitSprite(ball)
         window.blitSprite(paddle)
@@ -88,3 +89,4 @@ if __name__ == "__main__":
 
         window.updateScreen()
 
+'''

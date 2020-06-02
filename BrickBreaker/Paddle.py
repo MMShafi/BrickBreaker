@@ -11,7 +11,7 @@ class Paddle(Sprite):
         Sprite.__init__(self, window)
         self.setDimensions(150, 25)
         self.setPOS(self.window.getWidth() / 2 - self.width / 2, self.window.getHeight() - (self.height +10))
-        self.spd = 10
+        self.spd = 15
 
     # --- Modifier Methods --- #
 
