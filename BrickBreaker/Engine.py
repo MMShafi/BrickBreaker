@@ -11,6 +11,7 @@ class Engine:
         self.bricks = Bricks(self.window)
         self.ball = Ball(self.window)
         self.running = True
+        self.check = True
 
     def run(self):
         while self.running:
@@ -22,11 +23,19 @@ class Engine:
             self.paddle.move(self.window.getKeyPressed())
             self.ball.getBallPaddleCollision(self.paddle)
 
+
+
+
             for brick in self.bricks.getBricks():
-                self.ball.getBallBrickCollision(brick)
+               if self.ball.getBallBrickCollision(brick):
+                   self.check = False
+                   self.bricks.getBricks().pop(self.check)
+                   if len(self.bricks.getBricks()) ==0:
+                       self.check = False
+                       exit()
 
 
-            # --- Outputs --- #
+             # --- Outputs --- #
             self.window.clearScreen()
             self.window.blitSprite(self.ball)
             self.window.blitSprite(self.paddle)

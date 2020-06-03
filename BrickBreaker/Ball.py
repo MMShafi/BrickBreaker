@@ -28,8 +28,9 @@ class Ball(Sprite):
 
 
         elif  self.y > self.window.getHeight() - self.getHeight():
-            self.y =  self.window.getHeight() - self.getHeight()
-            self.dirY = -1
+            exit()
+            #self.y =  self.window.getHeight() - self.getHeight()
+            #self.dirY = -1
 
 
         self.pos = (self.x, self.y)
@@ -53,6 +54,7 @@ class Ball(Sprite):
             return True
         else:
             return False
+
 
 
 '''
