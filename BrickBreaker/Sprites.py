@@ -78,14 +78,3 @@ class Sprite:
     def getPOS(self):
         return self.pos
 
-'''
-if __name__ == "__main__":
-    from Window import Window
-    from pygame import init
-
-    init()
-    window = Window()
-    sprite = Sprite(window)
-    while True:
-        window.run(sprite)
-'''

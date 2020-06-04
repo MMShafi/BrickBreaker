@@ -3,7 +3,6 @@ from Paddle import Paddle
 from Bricks import *
 from Ball import Ball
 
-
 class Engine:
     def __init__(self):
         self.window = Window()
@@ -12,6 +11,8 @@ class Engine:
         self.ball = Ball(self.window)
         self.running = True
         self.check = True
+
+
 
     def run(self):
         while self.running:
@@ -23,20 +24,22 @@ class Engine:
             self.paddle.move(self.window.getKeyPressed())
             self.ball.getBallPaddleCollision(self.paddle)
 
-
-
-
-            for brick in self.bricks.getBricks():
+            for brick in self.bricks.getBricks(): #Checks collision for all the brick
                if self.ball.getBallBrickCollision(brick):
                    self.check = False
                    self.bricks.getBricks().pop(self.check)
+                   self.ball.updateScore()
+                   print("Score:%s" % (self.ball.getScore()))
+
                    if len(self.bricks.getBricks()) ==0:
                        self.check = False
                        exit()
 
 
-             # --- Outputs --- #
+
+            # --- Outputs --- #
             self.window.clearScreen()
+
             self.window.blitSprite(self.ball)
             self.window.blitSprite(self.paddle)
             self.bricks.blitBricks()
@@ -44,9 +47,3 @@ class Engine:
             self.window.updateScreen()
 
 
-if __name__ =="__main__":
-    from pygame import init
-    init()
-
-    engine = Engine()
-    engine.run()

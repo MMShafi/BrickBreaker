@@ -3,8 +3,6 @@ Title: Bricks class
 """
 
 from Sprites import Sprite
-import pygame
-
 
 class Box(Sprite):
 
@@ -19,10 +17,11 @@ class Bricks(Sprite):
         Sprite.__init__(self, window)
         self.bricks = []
 
-
+        #Put boxes in an array
         for i in range(7):
-            self.bricks.append(Box(self.window))
 
+            self.bricks.append(Box(self.window))
+        #Set position for each box in the array
         for i in range(len(self.bricks)):
             self.bricks[i].setPOS((i+0.2) * (self.bricks[i].getWidth() + 10), 15 )
 
@@ -34,35 +33,3 @@ class Bricks(Sprite):
 
     def getBricks(self):
         return self.bricks
-
-
-
-
-
-'''
-if __name__ == "__main__":
-    from pygame import init
-    from Window import Window
-    from Paddle import Paddle
-    from Ball import Ball
-
-    init()
-    window = Window()
-    ball = Ball(window)
-    paddle = Paddle(window)
-    bricks = Bricks(window)
-
-    while True:
-        window.getEvents()
-
-        ball.bounce()
-        paddle.move(window.getKeyPressed())
-
-        window.clearScreen()
-        window.blitSprite(ball)
-        window.blitSprite(paddle)
-        bricks.blitBricks()
-
-        window.updateScreen()
-
-'''

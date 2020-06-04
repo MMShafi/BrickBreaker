@@ -16,11 +16,13 @@ class Paddle(Sprite):
     # --- Modifier Methods --- #
 
     def move(self, keys):
+        #Only need to move the paddle left and right , it had a set y position
         if keys[K_d] == 1:
             self.x += self.spd
         elif keys[K_a] == 1:
             self.x -= self.spd
 
+        #Setting paddle boundaries
         if self.x > self.window.getWidth() - self.sprite.get_rect().width:
             self.x = self.window.getWidth() - self.sprite.get_rect().width
         elif self.x< 0:
@@ -29,19 +31,3 @@ class Paddle(Sprite):
         self.pos =(self.x, self.y)
 
 
-'''
-if __name__ == "__main__":
-    from pygame import init
-    from Window import Window
-
-    init()
-    window = Window()
-    paddle = Paddle(window)
-
-    while True:
-        window.getEvents()
-        paddle.move(window.getKeyPressed())
-        window.clearScreen()
-        window.blitSprite(paddle)
-        window.updateScreen()
-'''

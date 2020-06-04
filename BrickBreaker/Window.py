@@ -17,6 +17,7 @@ class Window:
         self.screen = pygame.display.set_mode(self.screenDimensions)
         self.screen.fill(self.background)
         self.caption =  pygame.display.set_caption(self.title)
+
         self.keysPressed = None
 
     # --- Modifier Methods --- #
@@ -60,9 +61,3 @@ class Window:
     def getKeyPressed(self):
         return self.keysPressed
 
-'''
-if __name__ == "__main__":
-    pygame.init()
-    window = Window()
-    window.run()
-'''
